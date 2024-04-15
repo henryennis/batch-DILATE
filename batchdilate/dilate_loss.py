@@ -41,7 +41,7 @@ class DTWShpTime(torch.nn.Module):
         assert input.shape == target.shape, f"Input shape ({input.shape}) and " \
                                             f"target shape ({target.shape}) must match exactly!"
 
-        batch_size, N_channel, N_output = input.shape
+        batch_size, N_output, N_channel = input.shape
 
         D = soft_dtw.pairwise_distances_with_channels_and_batches(
             target[:, :, :].reshape(batch_size * N_channel, N_output, 1).double(),
